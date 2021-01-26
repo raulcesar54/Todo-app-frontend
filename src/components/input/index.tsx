@@ -16,7 +16,8 @@ const InputComponent: React.FC<IInput> = ({ placeholder,updateValues }) => {
   });
   const InputRef = useRef<HTMLInputElement>(null);
   const handleInserNewTask = async () => {
-    await api.post("/task", { description: values.taskInput, status: 0 });
+
+    values.taskInput && await api.post("/task", { description: values.taskInput, status: 0 });
     updateValues()
     setFieldValue('taskInput','')
   };
