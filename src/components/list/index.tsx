@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../service/api";
 import { AiOutlineLike, AiTwotoneLike, AiOutlineClose } from "react-icons/ai";
-import { ListItem, Body, Text } from "./style";
+import { ListItem, Body, Text,Description } from "./style";
 import { transpile } from "typescript";
 interface ITask {
   id: number;
@@ -41,9 +41,9 @@ const List: React.FC<IList> = ({updateValues}) => {
           <>
             <ListItem>
                 {task.status === 0 ?
-                <Text value={task.description} onChange={(value) => updateTask(task.id, value.target.value)} isClosed={task.status === 0 ? false : true}/>
+                <Text value={task.description} onChange={(value) => updateTask(task.id, value.target.value)} />
                     :
-                    <p>{task.description}</p>
+                    <Description isClosed={task.status === 0 ? false : true}>{task.description}</Description>
             }
               <div>
                 {task.status === 0 ? (
